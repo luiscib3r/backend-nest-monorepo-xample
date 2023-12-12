@@ -10,7 +10,6 @@
     "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {},
     "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {}
   },
-
   // Configure tool-specific properties.
   "customizations": {
     // Configure properties specific to VS Code.
@@ -19,7 +18,6 @@
       "settings": {
         "terminal.integrated.shell.linux": "/usr/bin/zsh"
       },
-
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
         "adam-bender.commit-message-editor",
@@ -45,14 +43,19 @@
         "atlassian.atlascode",
         "esbenp.prettier-vscode",
         "firsttris.vscode-jest-runner",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "github.vscode-github-actions",
+        "redhat.vscode-yaml",
+        "shd101wyy.markdown-preview-enhanced"
       ]
     }
   },
-
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [8080, 5432],
-
+  "forwardPorts": [
+    3000,
+    3001,
+    3002
+  ],
   "postCreateCommand": "sudo chmod a+x .devcontainer/dev_config/init_script_commands.sh && .devcontainer/dev_config/init_script_commands.sh",
   //"postStartCommand": "npm run start:dev",
   // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.

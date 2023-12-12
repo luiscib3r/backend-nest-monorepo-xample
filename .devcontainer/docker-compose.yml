@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 services:
   nestjs-monorepo-xample:
     container_name: ${APPLICATION_NAME}
@@ -39,10 +39,10 @@ services:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
 
   adminer:
-    container_name: databaseAdmin
+    container_name: DB-Admin
     image: adminer
     restart: unless-stopped
     ports:
-      - 8081:8080
+      - 8082:8080
 volumes:
   postgres-data:

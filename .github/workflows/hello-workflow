@@ -1,0 +1,17 @@
+name: Hello workflow 1
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello_workflow:
+    name: Hello Workflow 1
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Echo el mensaje
+        run: echo "hello workflow"
+      - name: Fecha
+        run: date
+      - name: Ficheros en el SO
+        run: ls -l

@@ -37,3 +37,23 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#.env
+apps/api-v1/.env
+apps/api-v1/.dev.env
+apps/api-v1/.local.env
+apps/api-v2/.env
+apps/api-v2/.dev.env
+apps/api-v2/.local.env
+apps/api-v3/.env
+apps/api-v3/.dev.env
+apps/api-v3/.local.env
+
+#Docs
+/docs
+
+#migrations
+apps/api-v1/src/migrations
+.npmrc
+.devcontainer
+apps/api-v1/.env

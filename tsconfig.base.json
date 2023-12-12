@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@company/lib/data-acces": ["libs/data-acces/src/index.ts"],
+      "@company/lib-dto ": ["libs/dto/src/index.ts"],
+      "@company/lib-utils": ["libs/utils/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

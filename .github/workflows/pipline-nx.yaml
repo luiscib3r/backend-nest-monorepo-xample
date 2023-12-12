@@ -1,0 +1,45 @@
+name: Deployment pipeline with NX
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Bring me the last commit
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install node
+        uses: actions/setup-node@v4
+        # Cache node_modules
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - uses: nrwl/nx-set-shas@v3
+      # This line is needed for nx affected to work when CI is running on a PR
+      #- run: git branch --track main origin/main
+      - run: npx nx test-affected
+      - run: npx nx affected -t lint,test,build --parallel=3
+
+      # Añadir pasos de despliegue condicionales para cada aplicación afectada
+      # Deploy API-v1
+      - run: npx nx deploy:api-v1
+        if: contains(github.event_path, 'apps/api-v1') && success()
+
+      # Deploy API-v2
+      - run: npx nx deploy:api-v2
+        if: contains(github.event_path, 'apps/api-v2') && success()
+
+      # Deploy API-v3
+      - run: npx nx deploy:api-v3
+        if: contains(github.event_path, 'apps/api-v3') && success()

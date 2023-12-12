@@ -1,0 +1,153 @@
+{
+  "name": "xample-mono",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "local-registry": {
+      "executor": "@nx/js:verdaccio",
+      "options": {
+        "port": 4873,
+        "config": ".verdaccio/config.yml",
+        "storage": "tmp/local-registry/storage"
+      }
+    },
+    "api-v1:start:dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "env-cmd -f ./apps/api-v1/.dev.env nx serve api-v1"
+      }
+    },
+
+    "api-v2:start:dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "env-cmd -f ./apps/api-v2/.local.env nx serve api-v2"
+      }
+    },
+
+    "api-v3:start:dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "env-cmd -f ./apps/api-v3/.env nx serve api-v3"
+      }
+    },
+
+    "api-v1:orm:gen": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "env-cmd -f ./apps/api-v1/.dev.env typeorm migration:create ./apps/api-v1/src/migrations/init"
+        ],
+        "parallel": false
+      }
+    },
+
+    "api-v1:orm:run": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "env-cmd -f ./apps/api-v1/.dev.env typeorm-ts-node-esm -d ./apps/api-v1/src/config/data.source.ts migration:run"
+        ],
+        "parallel": false
+      }
+    },
+
+    "deploy:affected": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx affected -t"],
+        "parallel": false
+      }
+    },
+    "build:affected": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx affected build -t"],
+        "parallel": false
+      }
+    },
+    "test-affected": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx affected -t=test"
+      }
+    },
+    "build:api-v1": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx affected build --target=api-v1"],
+        "parallel": false
+      }
+    },
+    "build:api-v2": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx affected build --target=api-v2"],
+        "parallel": false
+      }
+    },
+    "build:api-v3": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx affected build --target=api-v3"],
+        "parallel": false
+      }
+    },
+    "affected:api-v1": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx affected --target=api-v1"],
+        "parallel": false
+      }
+    },
+
+    "affected:api-v2": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx affected --target=api-v2"],
+        "parallel": false
+      }
+    },
+
+    "affected:api-v3": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx affected --target=api-v3"],
+        "parallel": false
+      }
+    },
+
+    "api-v1:ls-project-root": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ls apps/api-v1/src"
+      }
+    },
+    "deploy:api-v1": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "curl -X POST -H 'Content-Type: application/json' -d '{\"ref\":\"main\"}' https://tu-servidor-api-v1/webhook-endpoint"
+        ],
+        "parallel": false
+      }
+    },
+    "deploy:api-v2": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "curl -X POST -H 'Content-Type: application/json' -d '{\"ref\":\"main\"}' https://tu-servidor-api-v2/webhook-endpoint"
+        ],
+        "parallel": false
+      }
+    },
+    "deploy:api-v3": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "curl -X POST -H 'Content-Type: application/json' -d '{\"ref\":\"main\"}' https://tu-servidor-api-v3/webhook-endpoint"
+        ],
+        "parallel": false
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+name: Nx Affected Test Release
+
+env:
+  # Branching
+  is-merge: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+  is-pull-request: ${{ github.event_name == 'pull_request' }}
+  BEFORE_SHA: ${{ github.event.before }}
+
+  # Node.js
+  NODE_OPTIONS: --max-old-space-size=6144
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v3
+        with:
+          # Required by nrwl/nx-set-shas
+          fetch-depth: 0
+      - name: 'Derive appropriate SHAs for base and head for `nx affected` commands'
+        uses: nrwl/nx-set-shas@v2
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-dependencies
+      - name: 'Test affected projects'
+        run: nx run xample-mono:test-release
