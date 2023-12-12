@@ -31,15 +31,10 @@ jobs:
       - run: npx nx test-affected
       - run: npx nx affected -t lint,test,build --parallel=3
 
-      # Añadir pasos de despliegue condicionales para cada aplicación afectada
-      # Deploy API-v1
       - run: npx nx deploy:api-v1
-        if: contains(github.event_path, 'apps/api-v1') && success()
 
       # Deploy API-v2
       - run: npx nx deploy:api-v2
-        if: contains(github.event_path, 'apps/api-v2') && success()
 
       # Deploy API-v3
       - run: npx nx deploy:api-v3
-        if: contains(github.event_path, 'apps/api-v3') && success()
