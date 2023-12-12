@@ -126,7 +126,7 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "curl -X POST -H 'Content-Type: application/json' -d '{\"ref\":\"main\"}' https://tu-servidor-api-v3/webhook-endpoint"
+          "curl -X POST -H 'Content-Type: application/json' -d '{\"ref\":\"main\"}' https://api.vercel.com/v1/integrations/deploy/prj_SEe0H4I43JzsttMSNF12veaSZkin/nN0fLxuPmh"
         ],
         "parallel": false
       }
@@ -135,7 +135,7 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "curl -X POST -H 'Content-Type: application/json' -d '{\"ref\":\"main\"}' https://api.vercel.com/v1/integrations/deploy/prj_SEe0H4I43JzsttMSNF12veaSZkin/nN0fLxuPmh"
+          "curl -X POST -H 'Content-Type: application/json' -d '{\"ref\":\"main\"}' https://api.vercel.com/v1/integrations/deploy/prj_SEe0H4I43JzsttMSNF12veaSZkin/fNu7EJDPuX"
         ],
         "parallel": false
       }
@@ -144,7 +144,7 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "curl -X POST -H 'Content-Type: application/json' -d '{\"ref\":\"main\"}' https://tu-servidor-api-v3/webhook-endpoint"
+          "curl -X POST -H 'Content-Type: application/json' -d '{\"ref\":\"main\"}' https://api.vercel.com/v1/integrations/deploy/prj_SEe0H4I43JzsttMSNF12veaSZkin/pk8XvU9EWz"
         ],
         "parallel": false
       }
