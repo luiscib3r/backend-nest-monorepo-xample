@@ -36,7 +36,7 @@ export class UsersService {
       throw new Error(error);
     }
   }
-
+  /*
   public async findUserById(id: string): Promise<UsersEntity> {
     try {
       return await this.userRepository
@@ -73,5 +73,5 @@ export class UsersService {
     } catch (error) {
       throw new Error(error);
     }
-  }
+  }*/
 }
