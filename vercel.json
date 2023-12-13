@@ -1,4 +1,9 @@
 {
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  },
   "version": 2,
   "builds": [
     {
@@ -7,7 +12,7 @@
     },
     {
       "src": "/dist/apps/api-v2/*",
-      "use": "@now/static"
+      "use": "@now/dinamic"
     }
   ],
   "routes": [
