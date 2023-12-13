@@ -2,14 +2,30 @@
   "version": 2,
   "builds": [
     {
+      "src": "apps/api-v1/src/main.ts",
+      "use": "@vercel/node"
+    },
+    {
       "src": "apps/api-v2/src/main.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "apps/api-v3/src/main.ts",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
+      "src": "/api/v1/(.*)",
+      "dest": "apps/api-v1/src/main.ts"
+    },
+    {
       "src": "/api/v2/(.*)",
       "dest": "apps/api-v2/src/main.ts"
+    },
+    {
+      "src": "/api/v3/(.*)",
+      "dest": "apps/api-v3/src/main.ts"
     }
   ]
 }
