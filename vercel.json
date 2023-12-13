@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/api/v2/(.*)",
-      "dest": "apps/api-v2/src/main.ts",
+      "dest": "apps/api-v2/src/main.ts"
     }
   ]
 }
