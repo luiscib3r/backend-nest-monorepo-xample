@@ -32,4 +32,4 @@ jobs:
       # Deploy API-v2 to Vercel
       - name: Deploy to Vercel
         run: |
-          curl -X POST -H 'Content-Type: application/json' -d '{"ref":"main"}' https://api.vercel.com/v1/integrations/deploy/prj_SEe0H4I43JzsttMSNF12veaSZkin/fNu7EJDPuX
+          curl -X POST -H 'Content-Type: application/json' -d '{"ref":"main"}' https://api.vercel.com/v1/integrations/deploy/prj_8ZmwHOvJ7hXX2WVVfBClpC1Qeswy
