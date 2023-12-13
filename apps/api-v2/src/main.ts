@@ -14,7 +14,7 @@ import morgan from 'morgan';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(morgan('dev'));
-  const globalPrefix = 'api2';
+  const globalPrefix = '';
   app.setGlobalPrefix(globalPrefix);
 
   const port = process.env.PORT || 3001;

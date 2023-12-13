@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/api2(.*)",
+      "src": "/(.*)",
       "dest": "/apps/api-v2/src/main.ts",
       "methods": ["GET", "POST", "PUT"]
     }
