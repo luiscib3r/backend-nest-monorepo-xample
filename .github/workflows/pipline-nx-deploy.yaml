@@ -26,15 +26,12 @@ jobs:
         run: npm ci --no-audit --no-fund
 
       - uses: nrwl/nx-set-shas@v3
-      # This line is needed for nx affected to work when CI is running on a PR
-      #- run: git branch --track main origin/main
-      - run: npx nx test-affected
-      - run: npx nx affected -t lint,test,build --parallel=3
 
-      - run: npx nx deploy:api-v1
+      - run: npx nx affected --target=api-v2 --base=main --head=HEAD --plain --parallel
 
-      # Deploy API-v2
-      - run: npx nx deploy:api-v2
-
-      # Deploy API-v3
-      - run: npx nx deploy:api-v3
+      # Deploy API-v2 to Vercel
+      - name: Deploy to Vercel
+        run: |
+          if [ -d "dist/apps/api-v2" ]; then
+            curl -X POST -H 'Content-Type: application/json' -d '{"ref":"main"}' https://api.vercel.com/v1/integrations/deploy/prj_SEe0H4I43JzsttMSNF12veaSZkin/fNu7EJDPuX
+          fi

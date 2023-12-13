@@ -104,6 +104,8 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": ["nx affected --target=api-v2"],
+        "base": "main",
+        "head": "HEAD",
         "parallel": false
       }
     },
