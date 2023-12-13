@@ -14,7 +14,7 @@ import morgan from 'morgan';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(morgan('dev'));
-  const globalPrefix = 'api';
+  const globalPrefix = 'api/v1';
   app.setGlobalPrefix(globalPrefix);
 
   app.useGlobalPipes(
