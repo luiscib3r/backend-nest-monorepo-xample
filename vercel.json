@@ -1,9 +1,4 @@
 {
-  "git": {
-    "deploymentEnabled": {
-      "main": true
-    }
-  },
   "version": 2,
   "builds": [
     {
@@ -15,7 +10,7 @@
     {
       "src": "/(.*)",
       "dest": "/apps/api-v2/src/main.ts",
-      "methods": ["GET"]
+      "methods": ["GET", "POST", "PUT"]
     }
   ]
 }
