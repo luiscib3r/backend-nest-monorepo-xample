@@ -2,26 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "/apps/api-v1/src/main.ts",
-      "use": "@vercel/node"
-    },
-    {
       "src": "/apps/api-v2/src/main.ts",
       "use": "@vercel/node"
     },
     {
       "src": "/dist/apps/api-v2/*",
       "use": "@now/static"
-    },
-    {
-      "src": "/apps/api-v3/src/main.ts",
-      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "./apps/api-v2/src/main.ts",
+      "dest": "/apps/api-v2/src/main.ts",
       "methods": ["GET"]
     }
   ]
