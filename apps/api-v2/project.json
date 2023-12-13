@@ -34,10 +34,7 @@
           "buildTarget": "api-v2:build:development"
         },
         "production": {
-          "buildTarget": "api-v2:build:production",
-          "build": {
-            "output": "dist/apps/api-v2"
-          }
+          "buildTarget": "api-v2:build:production"
         }
       }
     },
