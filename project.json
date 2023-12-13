@@ -106,6 +106,7 @@
         "commands": ["nx affected --target=api-v2"],
         "base": "main",
         "head": "HEAD",
+        "outputs": ["dist/apps/api-v2"],
         "parallel": false
       }
     },
