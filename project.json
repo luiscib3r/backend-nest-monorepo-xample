@@ -85,6 +85,13 @@
         "parallel": false
       }
     },
+    "build:api-v4": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx affected build --target=api-v2"],
+        "parallel": false
+      }
+    },
     "build:api-v3": {
       "executor": "nx:run-commands",
       "options": {
